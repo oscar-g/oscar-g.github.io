@@ -1,7 +1,7 @@
 // copy assets folder
 // (min with source map)
 // compile jade templates
-
+require('dotenv').config();
 var del = require('del'),
     gulp = require('gulp'),
     stylus = require('gulp-stylus'),
@@ -20,7 +20,11 @@ gulp.task('styles', function(){
 
 gulp.task('pages', function(){
     return gulp.src('./src/pages/**/*.jade')
-    .pipe(jade())
+    .pipe(jade({
+        locals: {
+            ga: process.env.GOOGLE_ANALYTICS_KEY,
+        }
+    }))
     .pipe(gulp.dest('./htdocs/'));
 });
 
