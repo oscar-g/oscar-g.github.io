@@ -1,0 +1,60 @@
+/*typographic measure*/
+.measure,
+%measure{
+  @include mq('sm'){
+    max-width: $measure_limit_sm;
+  }
+
+  @include mq('md'){
+    max-width: $measure_limit_md;
+  }
+
+  @include mq('lg'){
+    max-width: $measure_limit_lg;
+  }
+}
+  .measure--2col,
+  %measure--2col{
+    @extend %measure;
+
+    & .post__body, & p{
+      -moz-column-count: 1;
+      -webkit-column-count: 1;
+    }
+
+    @include mq($measure_2col_bp){
+      max-width: $measure_2col_max!important;
+      
+      & .post__body, & p{
+        @include vp(hyphens, auto);
+        text-align: justify;
+        -moz-column-count: 2;
+        -moz-column-gap: $base-line-height * 2;
+        -webkit-column-count: 2;
+        -webkit-column-gap: $base-line-height * 2;
+      }
+    }
+  }
+
+  .measure--3col,
+  %measure--3col{
+    @extend %measure;
+
+    & .post__body, & p{
+      -moz-column-count: 1;
+      -webkit-column-count: 1;
+    }
+
+    @include mq($measure_3col_bp){
+      max-width: $measure_3col_max!important;
+      
+      & .post__body, & p{
+        @include vp(hyphens, auto);
+        text-align: justify;
+        -moz-column-count: 3;
+        -moz-column-gap: $base-line-height;
+        -webkit-column-count: 3;
+        -webkit-column-gap: $base-line-height;
+      }
+    }
+  }

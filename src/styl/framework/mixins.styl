@@ -1,0 +1,79 @@
+$ms($step = 0)// $ratio = $ms-ratio, $base = $ms-base
+  if $step < 0
+    $ms-ratio = (1 / $ms-ratio)
+    $step = ($step * -1)
+
+  for num in (0..$step)
+    if $size is defined
+      $size = $size * $ms-ratio
+    else
+      $size = $ms-base
+
+  return $size
+
+// for px, return a factor of computed-line-height
+// for rem, return factor of computed-line-height, proportional to ms-base
+$space($step = 0, unit = rem)
+  $s = $computed-line-height * $step
+  if unit is px
+    return unit( round($s, 3), px)
+  else
+    return unit( round(($s/$ms-base), 3), rem)
+
+// set html font size to percentage of browser default
+// set line-height to ms-ratio
+// this is the only place where we should use 16px!
+$establish-baseline($fz = $ms-base)
+  html
+    font-size 100% * ($fz / 16px)
+    line-height $ms-ratio
+
+// font-size and line-height in rems using from a step in the modular-scale
+// pixel fallback
+$font-size($ms-step = 0, $extra-lines = 0)
+  $size = $ms($ms-step)
+
+  font-size round($size, 3)
+  font-size unit( round(($size / $ms-base), 3), rem)
+
+  // declare line-height unitless, as a factor of $computed-line-height
+  // Thanks to @redclov3r for line-height calculation
+  // twitter.com/redclov3r/status/250301539321798657
+  $lines = ceil($size / $computed-line-height) + ($extra-lines)
+  line-height unit($lines * ($computed-line-height / $size), '')
+
+$leader($step = 1, $prop = padding)
+  if ($step isnt 0)
+    {$prop}-top $space($step, px)
+    {$prop}-top $space($step)
+
+$trailer($step = 1, $prop=margin)
+  if ($step isnt 0)
+    {$prop}-bottom $space($step, px)
+    {$prop}-bottom $space($step)
+
+$mq($bp)
+  if ($bp-list[$bp] isnt null)
+    size = $ms($bp-list[$bp].measure) / $ms-base
+    @media screen and (min-width: unit(size, rem))
+      {block}
+
+// $mq-orient($bp, $orient landscape)
+//   if ($bp-list[$bp] isnt null)
+//     size = $ms($bp-list[$bp].measure) / $ms-base
+//     @media screen and (min-width: unit(size, rem)) and (orientation: $orient)
+//       {block}
+
+
+$vertical-grid($size)
+  html
+    background-image: s('url(http://basehold.it/i/%s)', $size)
+
+// pixels to rems (optional prop with pixel fallback)
+$to-rem(value, prop = null)
+    rem-value = unit( round(value / $ms-base, 3), rem)
+    if prop isnt null
+        {prop} value
+        {prop} rem-value
+    else
+        return rem-value

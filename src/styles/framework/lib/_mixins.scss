@@ -1,0 +1,38 @@
+@mixin mq($bp, $max: ''){
+  @if $max != '' {
+    $b: map-get($bp_end_map, $bp);
+    @media(max-width: #{$b}){
+      @content;
+    }
+  } @else {  
+    $b: map-get($bp_map, $bp);
+    @media (min-width: #{$b}){
+      @content;
+    }
+  }
+}
+
+@mixin vp($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+  -ms-#{$name}: #{$argument};
+  -moz-#{$name}: #{$argument};
+  -o-#{$name}: #{$argument};
+  #{$name}: #{$argument};
+}
+
+
+//modifies a range of headers
+@mixin hN($range){
+  @if $range == 'all'{
+    @for $i from 1 through 6 {
+      h#{$i} { @content; }
+    }
+  }
+
+  @if type_of($range) == list {
+    @for $j from nth($range, 1) to nth($range, 2){
+      h#{$j} { @content; }  
+    }
+  }
+
+}

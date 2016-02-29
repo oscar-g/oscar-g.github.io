@@ -1,0 +1,71 @@
+//Scheme: http://colorschemedesigner.com/csd-3.5/#3x325m6scdJP72SMPN3BpYg4yiYuiV3S-jH7YW
+$dark: #212121;
+$light: #CFD5D9;
+$med: #666;
+
+$brand: #2B70A6;
+$brand-light: #DAE4EB;
+$accent: #E14D46;
+$accent-alt: #F9E793;
+
+
+
+html{
+  color: $dark;
+	
+	@if ($debug){
+		
+	} @else {
+//		transition: 1s ease-out; 
+		//gradient
+		background: #dae4eb; /* Old browsers */
+		background: -moz-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dae4eb), color-stop(100%,#bbd5e9)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #dae4eb 0%,#bbd5e9 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #dae4eb 0%,#bbd5e9 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(top, #dae4eb 0%,#bbd5e9 100%); /* IE10+ */
+		background: linear-gradient(to bottom, #dae4eb 0%,#bbd5e9 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dae4eb', endColorstr='#bbd5e9',GradientType=0 ); /* IE6-9 */
+		background-attachment: fixed;
+	}
+}
+
+
+
+//links
+  a:link,
+  a:visited{
+    color: inherit; 
+    text-decoration: none;
+    // border-bottom: 1px solid $accent;
+
+  }
+  a:hover{
+    border-bottom-width: 0.25em; 
+  }
+	
+a.lk--achr:link{
+	color: $brand;
+	text-decoration: underline;
+}
+
+
+//helper classes
+
+.accent{color: $accent;}
+.og-red{
+	background-color: $accent!important;
+	color: #F9F1CB!important;
+}
+.og-yw{
+	background-color: $accent-alt!important;
+}
+.og-blu{
+	background-color: $brand!important;
+	color: $brand-light!important;
+}
+
+
+.og-btn{
+	
+}

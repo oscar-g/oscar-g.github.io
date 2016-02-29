@@ -1,0 +1,28 @@
+//http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+.media {
+  //margin:10px;
+}
+
+.media, .media__body {
+	//padding: $safe-space/2;
+	
+	@include mq('xs'){
+		overflow:hidden;
+		_overflow:visible;
+		zoom:1;
+	}
+}
+@debug $safe-space;
+
+.media .media__img {
+	@include mq('xs'){
+		float:left;
+		margin-right: $safe-space;
+		max-width: $safe-space*8;
+	}
+}
+
+.media .media__img img{
+  display:block;
+	margin-bottom: 0;
+}

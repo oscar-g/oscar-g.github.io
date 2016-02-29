@@ -1,0 +1,58 @@
+$debug ?= false
+$ms-base ?= 10px
+$ms-ratio ?= (3/2)
+$computed-line-height = $ms-ratio * $ms-base
+
+$text-color ?= lighten(#000, 20%)
+
+// $type map
+// element -> leader, trailer, size, className (ommit to use element name, false for no class)
+$typography-list ?= {
+  body: {
+    size: 0,
+    class: false,
+  },
+  p: {
+    lead: 0.666666,
+    trail: 0.33333,
+    size: 1,
+    'extra-lines': 1,
+    class: false
+  },
+  h1: {
+    lead: 1,
+    trail: 1,
+    size: 5,
+    'extra-lines': -1
+  },
+  h2: {
+    lead: 0.5,
+    trail: 0.5,
+    size: 5,
+    'extra-lines': 1
+  },
+  h3: {
+    lead: 0,
+    trail: 0,
+    size: 4
+  },
+  h4: {
+    lead: 0,
+    trail: 0,
+    size: 3
+  },
+  h5: {
+    lead: 0,
+    trail: 0,
+    size: 2
+  },
+  h6: {
+    lead: 0,
+    trail: 0,
+    size: 1
+  }
+}
+
+// measure: the size of the breakpoint, also the max-wdith for containers (in modular scale steps)
+// baseline: the document baseline (in unitless px) (overrides ms-base at these breakpoints)
+$bp-list ?= {}

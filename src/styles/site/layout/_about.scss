@@ -1,0 +1,31 @@
+#my-background{
+	@extend %layout;
+	@include margin-trailer(1);
+	
+	&>section{
+		@extend %layout;
+		@extend %measure--2col;
+//		@include margin-trailer(1);
+	}
+}
+
+#learn-more{
+
+}
+
+#request-resume form{
+		margin: 0 auto;
+		display: block;
+		max-width: $bp_xs;
+}
+
+#other-options{
+	a{
+		display: block;
+		text-align: center;
+		
+		@include mq('sm'){
+			text-align: left;
+		}
+	}
+}

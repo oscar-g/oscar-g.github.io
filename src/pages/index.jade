@@ -1,0 +1,18 @@
+extends ../layout.jade
+
+block title
+  title Home
+    
+block content
+  main
+    section#introduction(itemtype='https://schema.org/Person' itemscope)
+      div.profile
+        a(itemprop='image' itemscope itemtype='http://schema.org/ImageObject' href='http://oscargonzalez.us')
+          img.profile__pic(src='img/oscar-gonzalez.jpg' itemprop='contentUrl')
+        h1.profile__name(itemprop='name')
+          span(style='display:block') Oscar
+          span Gonzalez
+        .profile__description
+          p I'm a web software developer with a multidisciplinary background.
+          p I'm passionate about websites and software with exceptional features, calculated design, and effective communication.
+        

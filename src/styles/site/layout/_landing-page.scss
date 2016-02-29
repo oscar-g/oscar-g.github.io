@@ -1,0 +1,98 @@
+///*contact form*/
+//#contact-form{
+//	.pure-control-group{@include margin-trailer(1, $base-font-size)}
+//	
+//	@include mq('sm', 'end_of'){
+//		@include form-stacked();
+//		
+//	}
+//	
+//	@include mq('md'){
+//		@include form-aligned();
+//		button{
+//			margin-left: 11.5em;
+//		}
+//	}	
+//};
+
+////projects
+//.project-showcase{
+////	height: ms(12);
+//}
+//	.project{
+//		@extend %layout;
+//		@extend %cf!optional;
+//		position: relative;
+//		z-index: 100;
+//	}
+//		.project__img{
+////			max-width: ms(13)/$base-font-size * 1em;
+//			margin: 0 auto;
+//			@include mq('xs', 'end_of'){
+//				display: none;
+//			}
+//			
+//			@include mq('sm'){
+//				float: left;
+//				margin-right: 1.5rem;
+//				margin-bottom: 0.75rem;
+//				margin-top: 1.5rem;
+//				width: 33%;
+//			}
+//			@include mq('md'){
+//				float: none;
+//				width: 100%;
+//				&, &>img{margin:0;}
+//			}
+//		}
+//		.project__name{
+//	//		text-align: center;
+//		}
+//		.project__brief{
+////			max-width: ms(12)/$base/-font-size * 1em;
+////			margin: 0 auto;
+//		}
+//
+//	
+//	@include mq('md'){
+//		.project{
+////			height: 25em;
+//		}
+//		
+//		.project__img{
+//			z-index: 1;
+//			max-width: inherit;
+//			
+//			&img{position: absolute;}
+//
+//		}
+//		.project__name{
+//			position: absolute;
+//			width: 100%;
+//			bottom: 6rem;
+//
+//			padding-left: 1.5em;
+//			padding-top: 1.5rem;
+//			padding-bottom: 1.5rem;
+//			
+//			z-index: 25;
+//			background-color: rgb(225, 196, 70);
+//			background-color: rgba(225, 196, 70, .9);
+//		}
+//		.project__brief{
+//			position: absolute;
+//			top: 0;
+//			right: 0;
+//			width: 33%;
+//			height: 100%;
+//			padding: 1.5rem;
+//			
+//			text-align: justify;
+//			
+//			z-index: 50;
+//			background-color: rgb(55,97,129);
+//			background-color: rgba(55,97,129,.8);
+//			color: #DAE4EB;
+//		}
+//		
+//	}

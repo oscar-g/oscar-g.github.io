@@ -1,0 +1,51 @@
+//TODO: integrate layouts with typography
+//TODO: add small, medium, and large layouts
+
+.row, %row{
+  display: block;
+  width: percentage(11/12);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $layout_max;
+}
+  .layout,
+  %layout{
+    @extend %row;
+    @debug '.layout and %layout are permanently becoming .row and %row';
+  }
+
+
+
+
+
+/* layout helper classes and sass % */
+
+//floating
+.#{$ns_float}l, %#{$ns_float}l {float:left!important;}
+.#{$ns_float}r, %#{$ns_float}r {float:right!important;}
+.#{$ns_float}0, %#{$ns_float}0 {float: none!important;}
+
+//clearing
+.#{$ns-clear}l, %#{$ns-clear}l {clear:left!important;}
+.#{$ns-clear}r, %#{$ns-clear}r {clear:right!important;}
+.#{$ns-clear}b, %#{$ns-clear}b {clear:both!important;}
+.#{$ns-clear}n, %#{$ns-clear}n {clear:none!important;}
+
+//vertical alignment
+.#{$ns-align}t, %#{$ns-align}t   {vertical-align: top!important;}
+.#{$ns-align}b, %#{$ns-align}b   {vertical-align: bottom!important;}
+.#{$ns-align}m, %#{$ns-align}m   {vertical-align: middle!important;}
+.#{$ns-align}bl, %#{$ns-align}bl {vertical-align: baseline!important;}
+
+//centering
+.ctr--bk, %ctr--bk,
+.block-center{
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+
+//text-align
+.#{$ns-text-align}c, %#{$ns-text-align}c {text-align: center!important;}
+.#{$ns-text-align}l, %#{$ns-text-align}l {text-align: left!important;}
+.#{$ns-text-align}r, %#{$ns-text-align}r {text-align: right!important;}
+.#{$ns-text-align}j, %#{$ns-text-align}j {text-align: justify!important;}

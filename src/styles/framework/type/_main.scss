@@ -1,0 +1,70 @@
+//general
+@include establish-baseline($base-font-size);
+
+@each $type in $type_list {
+  $s: map-get($type, 'size');//required
+	@if ( round($s) == $s ) {
+		$s: ms($s);
+	} @else {
+		@if ($s < 1){
+			$s: ms(0) * (1+$s);
+		} @else {
+			$s: ms( floor($s) ) * ( $s - floor($s) );
+		}
+	}
+	
+  $c: map-get($type, 'class');//required
+  $el: map-get($type, 'el');//optional
+  $st: map-get($type, 'stack');//optional
+  $ln: map-get($type, 'lines');//optinoal
+    $lines: lines-for-font-size($s);
+    @if($ln){$lines:$ln;}
+    @else{ $lines: $lines;}
+
+
+  @if ($el){
+    #{$el}, .#{$c}, %#{$c}{
+      @include adjust-font-size-to( $s, $lines );
+      @include padding-leader(map-get($type, 'lead'), $s);
+      @include margin-trailer(map-get($type, 'trail'), $s);
+
+    @if ($st){font-family: #{$st}; } 
+    @else {font-family: #{$base-font-stack} }
+
+    }
+  } @else {
+    .#{$c}, %#{$c}{
+      @include adjust-font-size-to( $s, $lines );
+      @include padding-leader(map-get($type, 'lead'), $s);
+      @include margin-trailer(map-get($type, 'trail'), $s);
+      
+      @if ($st){font-family: #{$st}; }
+      @else {font-family: #{$base-font-stack} }
+    }
+  }
+
+}
+
+/*Lists*/
+//TODO: Move this into its own file
+ul,ol{
+//	padding-left: $safe-space/$ms-ratio;
+}
+//nested constructs
+ul li ol,
+ul li ul,
+ol li ol,
+ol li ul{
+	font-size: inherit;
+  padding-left: $safe-space;
+  padding-top: $safe-space/2;
+//  padding-bottom: $safe-space/2;
+
+}
+
+
+
+//text-level elements
+i{
+//	font-style: italic;
+}

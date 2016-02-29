@@ -1,0 +1,51 @@
+//set the baseline at different breakpoints
+$establish-baseline()
+if ($debug is true)
+  $vertical-grid(unit(round($ms-base * $ms-ratio), ''))
+
+for $bp, $config in $bp-list
+  if ($config.baseline isnt null)
+    +$mq($bp)
+      $establish-baseline(unit($config.baseline, px))
+      if ($debug is true)
+        $vertical-grid( unit(round($ms-ratio * $config.baseline), '') )
+
+  // if ($config.measure isnt null)
+  //   .measure-{$bp}
+  //     max-width $ms($config.measure)
+  //     // max-width $to-rem(@max-width)
+
+//reset spacing values
+p, h1, h2, h3, h4, h5, h6, small
+  margin 0
+  padding 0
+
+html
+  font-family: 'Merriweather', serif
+  color $text-color
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'Montserrat', sans-serif
+  font-weight 400
+
+h1
+  font-weight 700
+
+// set font size, leading, trailing, as configured
+for $element, $config in $typography-list
+  $selector = $element
+
+  if ($config.class is null)
+    $selector += ', .'+$element
+  else
+    if ($config.class isnt false)
+      $selector += ', .'+$config.class
+
+  {$selector}
+    $leader($config.lead || 0)
+    $trailer($config.trail || 0)
+
+    if ($config['extra-lines'] isnt null)
+      $font-size($config.size, $config['extra-lines'])
+    else
+      $font-size($config.size)

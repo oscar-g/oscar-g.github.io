@@ -1,0 +1,27 @@
+/*Breakpoints (in ems)*/
+  //breakpoint start points
+  $bp_map: ("xs" : $bp_xs,
+            "sm" : $bp_sm,
+            "md" : $bp_md,
+            "lg" : $bp_lg,
+            'xlg': $bp_xlg);
+  //breakpoint endpoints
+  $bp_end_map: ("xs" : $bp_sm - 0.001,
+                "sm" : $bp_md - 0.001,
+                "md" : $bp_lg - 0.001,
+                "lg" : $bp_xlg - 0.001);
+
+// /*Layout*/
+//   $layout_max:map-get($bp_map, 'lg')!default;
+//   $layout_min:map-get($bp_map, 'sm')!default;
+
+
+
+/*grid*/
+$grid-bp: $bp_map!default;
+
+/*Typography*/
+$type_list: $body, $lead, 
+            $h1, $h2, $h3, $h4, $h5, $h6,
+            $giga, $mega, $kilo,
+            $mini, $milli, $label, $list, $list-item;

@@ -1,0 +1,109 @@
+//$base-font-size: 10px;
+//$base-line-height: 15px;
+
+$gutter-width: 1.5rem;
+//  $bp_xs:   ms(10)/$base-font-size*1em!default;
+//  $bp_sm:   ms(11)/$base-font-size*1em!default;
+//  $bp_md:   ms(12)/$base-font-size*1em!default;
+//  $bp_lg:   ms(14)/$base-font-size*1em!default;
+//  $bp_xlg:  ms(15)/$base-font-size*1em!default;
+	
+  $bp_sm:   ms(12)/$base-font-size*1.33em;
+  $bp_md: ms(13)/$base-font-size*1em;
+  $bp_lg:   ms(15)/$base-font-size*1em;
+  $bp_xlg:  ms(16)/$base-font-size*1em;
+  
+
+  $col-groups: (2, 3, 4, 5, 6, 8, 10, 12);
+
+
+$base-font-stack: "Ubuntu", sans-serif;
+$alt-font-stack: "Lora", "Times", 'serif';
+
+
+
+/*layout*/
+//$layout_bp: 'md';
+//$layout_max: $bp_lg;
+
+//TODO: These should me rems!
+$layout_max: $bp_lg;//$bp_md*1.5;
+
+$measure_limit_sm: ms(11)/$base-font-size * 1.333em;
+$measure_limit_md: ms(12)/$base-font-size * 1em;
+$measure_limit_lg: ms(13)/$base-font-size * 1em;
+
+$measure_2col_bp: 'md';
+$measure_2col_max: ms(14)/$base-font-size * 1em;
+
+$measure_3col_bp: 'lg';
+$measure_3col_max: ms(15)/$base-font-size * 1em;
+
+$body:(
+	"size": 0,
+	"lead": .25,
+	"trail": .75,
+	'class': body,
+	'el': p
+);
+$lead:(
+	"size": 1,
+	"lead": 0.333,
+	"lines": 1.5,
+	"trail": 0.667,
+	'class': lead
+);
+
+$h1:(
+	"size":  6,
+	"lead":  0.5,
+	"trail": 1.5,
+	'class': alpha,
+	'el': h1
+);
+	
+$h2:(
+	"size":  4,
+	"lead":  0.20,
+	"trail": 0.80,
+	'lines': 2,
+	'class': beta,
+	'el': h2
+);
+$h3:(
+	"size":  2,
+	"lead":  0.1,
+	"trail": 0.9,
+	"lines": 1,
+	'class': gamma,
+	'el': h3
+);
+$h4:(
+	"size":  1,
+	"lead":  0.125,
+	"lines": 1,
+	"trail": 0.375,
+	'class': delta,
+	'el': h4
+);
+$h5:(
+	"size":  1,
+	"lead":  0.125,
+	"lines": 1,
+	"trail": 0.375,
+	'class': epsilon,
+	'el': h5
+);
+
+$kilo:(
+	"size":  6,
+	"lead":  0.500,
+	"trail": 0.500,
+	'class': kilo
+);
+
+$ns_text-align: 'ta--';
+
+//TODO: add these to thr framework
+$debug: false;
+$safe-space:  ($base-line-height / $base-font-size) * 1rem;

@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import 'framework/vars'; //default vars
+@import 'vars'; //overrides framework/vars
+@import 'framework/maps'; //create maps safely (after declaring all vars)
+
+//The Framework:
+@import 'framework/screen'; //get the framework
+
+// Layout
+  // @import 'site/layout/forms';//TODO: remove this shame!
+
+  @import 'site/layout/site';
+  @import 'site/layout/brand';
+
+	//pages
+  @import 'site/layout/landing-page';
+  @import 'site/layout/about';
+
+// Theme
+  @import 'site/theme/colors';
+  @import 'site/theme/fonts';
+  @import 'site/theme/icons';
+  @import 'site/theme/brand';
+
+
+@debug $bp_map;
+
+
+
+
+//shame below!
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.nav{padding-left:0;}
+
+
+.stack{
+  &>div,
+  &>span{
+    display: block;
+    clear: both;
+  }
+}
+
+
+
+.flush{
+  margin: 0;
+  padding:0;
+}

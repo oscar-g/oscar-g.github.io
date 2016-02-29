@@ -1,0 +1,91 @@
+/*-----------------------------------*\
+
+  $TOAST-GRID
+
+  An insane grid.
+  You'd be mad to use it.
+
+grid:
+  .g
+  .g--no-gutter
+
+columns:
+    .col--1-2
+    .col--bp--1-2
+    .push--bp--1-2
+    .pull--bp--1-2
+
+\*-----------------------------------*/
+
+
+
+/*Grid-setup*/
+@mixin grid-setup($ns){
+  @each $group in $col-groups {
+    @for $i from 1 through $group {
+      .#{$grid-col-ns}--#{$ns}#{$i}-#{$group},
+      %#{$grid-col-ns}--#{$ns}#{$i}-#{$group} {
+        width: percentage($i/$group);
+      }
+      .push--#{$ns}#{$i}-#{$group},
+      %push--#{$ns}#{$i}-#{$group} {
+        margin-left: percentage($i/$group)!important;
+      }
+			.push--#{$ns}0{margin-left:0!important;}
+
+      .pull--#{$ns}#{$i}-#{$group},
+      %pull--#{$ns}#{$i}-#{$group} {
+        margin-left: -(percentage($i/$group))!important;
+      }
+    } // end @for
+  } // end @each
+
+  /*variations that may overide the above*/
+  //no gutter
+  .#{$grid-ns}--#{$ns}no-gutter,
+  %#{$grid-ns}--#{$ns}no-gutter {
+    margin-left: 0;
+    width: 100%;
+    &>.#{$grid-item-ns},
+		&>%#{$grid-item-ns}{
+      padding-left: 0;
+    }
+    .#{$grid-item-ns}--span-all {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+}
+
+
+
+//the grid wrapper
+.#{$grid-ns},
+%#{$grid-ns} {
+  list-style: none;
+  margin-left: -$gutter-width / 2;
+  width: 100%;   
+}
+  //grid items
+  .#{$grid-item-ns},
+  %#{$grid-item-ns}{
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+    display: inline-block;
+    margin-right: -.25em;
+    min-height: 1px;
+    padding-left: $gutter-width;
+    vertical-align: top;
+  }
+
+//set up the grid
+@include grid-setup("");
+
+
+@each $bp_ns,$bp_val in $bp_map{
+  @include mq($bp_ns){
+    $bp_ns: $bp_ns+"--";
+    @include grid-setup($bp_ns);
+  }
+}//end @each
