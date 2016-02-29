@@ -1,0 +1,6 @@
+// set up containers
+for $bp, $config in $bp-list
+  if ($config.measure isnt null)
+    .measure--{$bp}
+      $m = $ms($config['measure'])
+      $to-rem($m, max-width)

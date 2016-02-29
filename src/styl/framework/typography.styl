@@ -1,20 +1,3 @@
-//set the baseline at different breakpoints
-$establish-baseline()
-if ($debug is true)
-  $vertical-grid(unit(round($ms-base * $ms-ratio), ''))
-
-for $bp, $config in $bp-list
-  if ($config.baseline isnt null)
-    +$mq($bp)
-      $establish-baseline(unit($config.baseline, px))
-      if ($debug is true)
-        $vertical-grid( unit(round($ms-ratio * $config.baseline), '') )
-
-  // if ($config.measure isnt null)
-  //   .measure-{$bp}
-  //     max-width $ms($config.measure)
-  //     // max-width $to-rem(@max-width)
-
 //reset spacing values
 p, h1, h2, h3, h4, h5, h6, small
   margin 0
@@ -30,6 +13,19 @@ h1, h2, h3, h4, h5, h6
 
 h1
   font-weight 700
+
+// setup responsive baseline and vertical grid (when debugging)
+$establish-baseline()
+
+for $bp, $config in $bp-list
+  if ($config.baseline isnt null)
+    +$mq($bp)
+      $establish-baseline(unit($config.baseline, px))
+      if ($debug is true)
+        $vertical-grid( unit(round($ms-ratio * $config.baseline), '') )
+
+if ($debug is true)
+  $vertical-grid(unit(round($ms-base * $ms-ratio), ''))
 
 // set font size, leading, trailing, as configured
 for $element, $config in $typography-list

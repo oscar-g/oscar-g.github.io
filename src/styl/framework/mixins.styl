@@ -15,10 +15,14 @@ $ms($step = 0)// $ratio = $ms-ratio, $base = $ms-base
 // for rem, return factor of computed-line-height, proportional to ms-base
 $space($step = 0, unit = rem)
   $s = $computed-line-height * $step
+
   if unit is px
-    return unit( round($s, 3), px)
+    $r = unit( round($s, 3), px)
+
   else
-    return unit( round(($s/$ms-base), 3), rem)
+    $r = unit( round(($s/$ms-base), 3), rem)
+
+  return $r
 
 // set html font size to percentage of browser default
 // set line-height to ms-ratio
@@ -54,7 +58,7 @@ $trailer($step = 1, $prop=margin)
 
 $mq($bp)
   if ($bp-list[$bp] isnt null)
-    size = $ms($bp-list[$bp].measure) / $ms-base
+    size = $ms($bp-list[$bp].breakpoint) / $ms-base
     @media screen and (min-width: unit(size, rem))
       {block}
 
@@ -71,9 +75,9 @@ $vertical-grid($size)
 
 // pixels to rems (optional prop with pixel fallback)
 $to-rem(value, prop = null)
-    rem-value = unit( round(value / $ms-base, 3), rem)
-    if prop isnt null
-        {prop} value
-        {prop} rem-value
-    else
-        return rem-value
+  rem-value = unit( round(value / $ms-base, 3), rem)
+  if prop isnt null
+    {prop} value
+    {prop} rem-value
+  else
+    return rem-value

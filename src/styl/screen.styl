@@ -1,25 +1,29 @@
 // $debug = true
 
 // content-based standard breakpoints
+// measure = container size
+// baseline = unitless pixels for base font size
+// breakpoint = modular-scale degree for min-width media query
 $bp-list ?= {
   // xs: {
   //   measure: 8,
   //   baseline: 12
   // },
-  // sm: {
-  //   measure: 9,
+  sm: {
+    measure: 9
   //   baseline: 12
-  // },
+  }
   md: {
-    measure: 10,
+    breakpoint: 10
+    measure: 10
     baseline: 16
-  },
+  }
   lg: {
-    measure: 11,
+    breakpoint: 11
     baseline: 20
   }
   xlg: {
-    measure: 12,
+    breakpoint: 12
     baseline: 24
   }
 }
@@ -37,14 +41,14 @@ if $debug isnt true
       background -o-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%)
       background -ms-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%)
       background linear-gradient(to bottom, #dae4eb 0%, #bbd5e9 100%)
-      filter unquote("progid:DXImageTransform.Microsoft.gradient( startColorstr='#dae4eb', endColorstr='#bbd5e9',GradientType=0 )")
+      filter unquote("progid:DXImageTransform.Microsoft.gradient( startColorstr='#dae4eb', endColorstr='#bbd5e9', GradientType=0 )")
       background-attachment fixed
-
 
 .profile
   @extend .cf
+  @extend .measure--md
+
   width 100%
-  max-width 52rem
 
   if $debug isnt true
     position absolute
