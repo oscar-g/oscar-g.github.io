@@ -85,3 +85,18 @@ $to-rem(value, prop = null)
     {prop} rem-value
   else
     return rem-value
+
+// sets all font styles (size, line-height, leader, trailer)
+$font-styles($c)
+  _k = keys($c)
+
+  if (size in _k)
+    if (lead in _k)
+      $leader($c.lead)
+    if (trail i keys)
+      $trailer($c.trail or 0)
+
+    if ('extra-lines' in _k)
+      $font-size($c.size, $c['extra-lines'])
+    else
+      $font-size($c.size)

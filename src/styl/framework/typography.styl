@@ -39,10 +39,16 @@ for $element, $config in $typography-list
       $selector += ', .'+$config.class
 
   {$selector}
-    $leader($config.lead || 0)
-    $trailer($config.trail || 0)
-
-    if ($config['extra-lines'] isnt null)
-      $font-size($config.size, $config['extra-lines'])
+    if ($config.size isnt null)
+      $font-styles($config)
     else
-      $font-size($config.size)
+      // if there is no 'size' key,
+      // then this is reponsive (bp -> config map)
+      for $bp, $c in $config
+        _c = keys($c)
+        if ($bp is base)
+          // base configuration (no media query)
+          $font-styles($c)
+        else
+          +$mq($bp)
+            $font-styles($c)
