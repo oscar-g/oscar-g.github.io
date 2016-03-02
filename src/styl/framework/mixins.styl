@@ -58,8 +58,12 @@ $trailer($step = 1, $prop=margin)
 
 $mq($bp)
   if ($bp-list[$bp] isnt null)
-    size = $ms($bp-list[$bp].breakpoint) / $ms-base
-    @media screen and (min-width: unit(size, rem))
+    if (unit($bp-list[$bp].breakpoint) is px)
+      size = $bp-list[$bp].breakpoint
+    else
+      size = $ms($bp-list[$bp].breakpoint)
+
+    @media screen and (min-width: unit(size, px))
       {block}
 
 // $mq-orient($bp, $orient landscape)
