@@ -1,81 +1,69 @@
 // $debug = true
-
-// content-based standard breakpoints
-// measure = container size
-// baseline = unitless pixels for base font size
-// breakpoint = modular-scale degree for min-width media query
-$bp-list ?= {
-  // xs: {
-  //   measure: 8,
-  //   baseline: 12
-  // },
-  sm: {
-    measure: 9
-  //   baseline: 12
-  }
-  md: {
-    breakpoint: 10
-    measure: 10
-    baseline: 16
-  }
-  lg: {
-    breakpoint: 11
-    baseline: 20
-  }
-  xlg: {
-    breakpoint: 12
-    baseline: 24
-  }
-}
-
 $brand =  #dae4eb
-@import 'framework/main'
 
-if $debug isnt true
-    html
-      min-height 100%
-      background $brand
-      background -moz-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%)
-      background -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dae4eb), color-stop(100%, #bbd5e9))
-      background -webkit-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%)
-      background -o-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%)
-      background -ms-linear-gradient(top, #dae4eb 0%, #bbd5e9 100%)
-      background linear-gradient(to bottom, #dae4eb 0%, #bbd5e9 100%)
-      filter unquote("progid:DXImageTransform.Microsoft.gradient( startColorstr='#dae4eb', endColorstr='#bbd5e9', GradientType=0 )")
-      background-attachment fixed
+@import 'framework/main'
+@import 'bg'
+
+main
+  $to-rem($computed-line-height, padding)
 
 .profile
   @extend .cf
-  @extend .measure--md
+  // max-width 52rem
+  margin 0 auto
 
-  width 100%
+  +$mq(sm)
+    max-width 34rem
+    margin 0 auto
 
-  if $debug isnt true
-    position absolute
-    top 50%
-    left 50%
-    transform translate(-50%, -50%)
+  +$mq(md)
+    max-width 49rem
 
-  a
-    float left
-    display block
-    padding-top $computed-line-height
-    margin-right @padding-top / 2
-    padding-top $to-rem(@padding-top)
-    margin-right $to-rem(@margin-right)
+  &__intro
+    text-align center
+    $trailer(1, padding)
 
-  &__pic
-    display block
-    width 100%
-    height auto
-    max-width $computed-line-height * 10 - 1
-    border-radius (@max-width / 2)
-    max-width $to-rem(@max-width)
-    border-radius (@max-width / 2)
-    box-shadow 1px 1px 3px $text-color
-    border-radius 50%
+    +$mq(sm)
+      text-align left
+
+    +$mq(md)
+      $trailer(0, padding)
+
+    &__pic
+      display block
+      +$mq(sm)
+        float left
+        $leader(0.3)
+        margin-right $space(1, px)
+        margin-right $space(1)
+
+        +$mq(md)
+          $leader(1.5)
+
+      img
+        display inline
+        vertical-align top
+        width 100%
+        height auto
+        box-shadow 1px 1px 3px $text-color
+
+        _s = ($space(6, px) - 1px)
+        $to-rem(_s, max-width)
+        $to-rem(_s * 0.5, border-radius)
+        border-radius 50%
+
+        +$mq(md)
+          //slightly larger image
+          _s = ($space(8, px) - 1px)
+          $to-rem(_s, max-width)
+          $to-rem(_s * 0.5, border-radius)
+          border-radius 50%
+
+    &__name
+      +$mq(sm)
+        span
+          display block
+
 
   &__description
     text-align center
-    // padding-top $computed-line-height * 1
-    // padding-top $to-rem(@padding-top)

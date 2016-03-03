@@ -1,58 +1,93 @@
 $debug ?= false
-$ms-base ?= 10px
+$ms-base ?= 12px
 $ms-ratio ?= (3/2)
 $computed-line-height = $ms-ratio * $ms-base
 
 $text-color ?= lighten(#000, 20%)
 
-// $type map
-// element -> leader, trailer, size, className (ommit to use element name, false for no class)
+// typography map
+// selector -> leader, trailer, size, class (true to use selector name as class name)
+// selector -> base: {}, $bp: {}
 $typography-list ?= {
   body: {
     size: 0
     class: false
   }
   p: {
-    lead: 0.666666
-    trail: 0.33333
-    size: 1
-    'extra-lines': 1
-    class: false
+    lead: 0.25
+    trail: 0.75
+    size: 0
+    'extra-lines': 0
+  }
+  '.lede': {
+    base: {
+      lead: .9
+      trail: 0.6
+      size: 1
+      'extra-lines': 0.5
+    }
   }
   h1: {
-    lead: 1
-    trail: 1
-    size: 5
-    'extra-lines': -1
+    base: {
+      lead: 0.3
+      trail: 0.7
+      size: 4
+      'extra-lines': -1
+    }
+    md: {
+      lead: 0.7
+      trail: 0.3
+      size: 5
+      'extra-lines': -1
+    }
   }
-  h2: {
-    lead: 0.5
-    trail: 0.5
-    size: 5
-    'extra-lines': 1
-  }
-  h3: {
-    lead: 0
-    trail: 0
-    size: 4
-  }
-  h4: {
-    lead: 0
-    trail: 0
-    size: 3
-  }
-  h5: {
-    lead: 0
-    trail: 0
-    size: 2
-  }
-  h6: {
-    lead: 0
-    trail: 0
-    size: 1
-  }
+  // h2: {
+  //   lead: 0.5
+  //   trail: 0.5
+  //   size: 5
+  //   'extra-lines': 1
+  // }
+  // h3: {
+  //   lead: 0
+  //   trail: 0
+  //   size: 4
+  // }
+  // h4: {
+  //   lead: 0
+  //   trail: 0
+  //   size: 3
+  // }
+  // h5: {
+  //   lead: 0
+  //   trail: 0
+  //   size: 2
+  // }
+  // h6: {
+  //   lead: 0
+  //   trail: 0
+  //   size: 1
+  // }
 }
 
-// measure: the size of the breakpoint also the max-wdith for containers (in modular scale steps)
-// baseline: the document baseline (in unitless px) (overrides ms-base at these breakpoints)
-$bp-list ?= {}
+// content-based standard breakpoints
+// measure = container size
+// baseline = unitless pixels for base font size
+// breakpoint = modular-scale degree for min-width media query (@uses $ms-base)
+$bp-list ?= {
+  sm: {
+    measure: 9
+    breakpoint: 9
+  }
+  md: {
+    breakpoint: 10
+    measure: 10
+  }
+  lg: {
+    breakpoint: 11
+    baseline: 18
+  }
+  xlg: {
+    breakpoint: 12
+    // baseline: 20
+  }
+}

@@ -50,11 +50,16 @@ $leader($step = 1, $prop = padding)
   if ($step isnt 0)
     {$prop}-top $space($step, px)
     {$prop}-top $space($step)
+  else
+    {$prop}-top 0
 
 $trailer($step = 1, $prop=margin)
   if ($step isnt 0)
     {$prop}-bottom $space($step, px)
     {$prop}-bottom $space($step)
+  else
+    {$prop}-bottom 0
+
 
 $mq($bp)
   if ($bp-list[$bp] isnt null)
@@ -63,7 +68,7 @@ $mq($bp)
     else
       size = $ms($bp-list[$bp].breakpoint)
 
-    @media screen and (min-width: unit(size, px))
+    @media screen and (min-width: unit(floor(size), px))
       {block}
 
 // $mq-orient($bp, $orient landscape)
@@ -92,7 +97,7 @@ $font-styles($c)
 
   if (size in _k)
     if (lead in _k)
-      $leader($c.lead)
+      $leader($c.lead or 0)
     if (trail i keys)
       $trailer($c.trail or 0)
 

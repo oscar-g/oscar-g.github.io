@@ -32,11 +32,8 @@ for $bp, $config in $bp-list
 for $element, $config in $typography-list
   $selector = $element
 
-  if ($config.class is null)
+  if ($config.class is true)
     $selector += ', .'+$element
-  else
-    if ($config.class isnt false)
-      $selector += ', .'+$config.class
 
   {$selector}
     if ($config.size isnt null)

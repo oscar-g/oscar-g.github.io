@@ -4,15 +4,12 @@ block title
   title Home
     
 block content
-  main
-    section#introduction(itemtype='https://schema.org/Person' itemscope)
+  main(itemtype='https://schema.org/Person' itemscope)
+    section#introduction
       div.profile
-        a(itemprop='image' itemscope itemtype='http://schema.org/ImageObject' href='http://oscargonzalez.us')
-          img.profile__pic(src='img/oscar-gonzalez.jpg' itemprop='contentUrl')
-        h1.profile__name(itemprop='name')
-          span(style='display:block') Oscar
-          span Gonzalez
-        .profile__description
-          p I'm a web software developer with a multidisciplinary background.
-          p I'm passionate about websites and software with exceptional features, calculated design, and effective communication.
-        
+        .profile__intro
+          .profile__intro__pic(itemprop='image' itemscope itemtype='http://schema.org/ImageObject')
+            img(src='img/oscar-gonzalez.jpg' itemprop='contentUrl')
+          h1.profile__intro__name(itemprop='name') Oscar Gonzalez
+        .profile__description(itemprop='description')
+          p.lede I'm a software developer with a multidisciplinary background.
