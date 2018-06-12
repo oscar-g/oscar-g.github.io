@@ -5,7 +5,7 @@ require('dotenv').config();
 var del = require('del'),
     gulp = require('gulp'),
     stylus = require('gulp-stylus'),
-    jade = require('gulp-jade');
+    pug = require('gulp-pug');
 
 gulp.task('assets', function(){
     return gulp.src('./src/assets/**/*')
@@ -19,8 +19,8 @@ gulp.task('styles', function(){
 });
 
 gulp.task('pages', function(){
-    return gulp.src('./src/pages/**/*.jade')
-    .pipe(jade({
+    return gulp.src('./src/pages/**/*.pug')
+    .pipe(pug({
         locals: {
             ga: process.env.GOOGLE_ANALYTICS_KEY,
         }
