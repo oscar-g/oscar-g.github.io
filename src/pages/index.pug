@@ -2,14 +2,21 @@ extends ../layout
 
 block title
   title Home
-    
-block content
-  main(itemtype='https://schema.org/Person' itemscope)
-    section#introduction
-      div.profile
-        .profile__intro
-          .profile__intro__pic(itemprop='image' itemscope itemtype='http://schema.org/ImageObject')
-            img(src='img/oscar-gonzalez.jpg' itemprop='contentUrl')
-          h1.profile__intro__name(itemprop='name') Oscar Gonzalez
-        .profile__description(itemprop='description')
-          p.lede I'm a software developer with a multidisciplinary background.
+
+block header
+  header(itemtype='https://schema.org/Person' itemscope)
+    .profile
+      .profile__img(itemprop='image' itemscope itemtype='http://schema.org/ImageObject')
+        img(src=profile.imgSrc alt=profile.imgAlt itemprop='contentUrl')
+      .profile__info
+        h1(itemprop='name') !{profile.fullname}
+        h2(itemprop='description')= profile.description
+
+//- block content
+  main
+    section
+      p About me
+      p Contact me
+    article
+      h1 Dolor sit amet
+      p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

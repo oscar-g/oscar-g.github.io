@@ -1,69 +1,27 @@
-// $debug = true
-$brand =  #dae4eb
+@import '../../node_modules/normalize-styl'
+@import '../../node_modules/modularscale-styl/stylesheets/_modular-scale'
 
-@import 'framework/main'
-@import 'bg'
+@import 'vars'
+@import 'mixins/mq'
+@import 'base/typography'
+@import 'base/layout'
 
-main
-  $to-rem($computed-line-height, padding)
+// theme
+@import 'modules/bg'
+@import 'modules/profile'
 
-.profile
-  @extend .cf
-  // max-width 52rem
-  margin 0 auto
+if $debug
+  body
+    border: 3px solid black;
 
-  +$mq(sm)
-    max-width 34rem
-    margin 0 auto
+    +mq(sm)
+      border-color: red;
 
-  +$mq(md)
-    max-width 49rem
+    +mq(md)
+      border-color: green;
 
-  &__intro
-    text-align center
-    $trailer(1, padding)
+    +mq(lg)
+      border-color: blue;
 
-    +$mq(sm)
-      text-align left
-
-    +$mq(md)
-      $trailer(0, padding)
-
-    &__pic
-      display block
-      +$mq(sm)
-        float left
-        $leader(0.3)
-        margin-right $space(1, px)
-        margin-right $space(1)
-
-        +$mq(md)
-          $leader(1.5)
-
-      img
-        display inline
-        vertical-align top
-        width 100%
-        height auto
-        box-shadow 1px 1px 3px $text-color
-
-        _s = ($space(6, px) - 1px)
-        $to-rem(_s, max-width)
-        $to-rem(_s * 0.5, border-radius)
-        border-radius 50%
-
-        +$mq(md)
-          //slightly larger image
-          _s = ($space(8, px) - 1px)
-          $to-rem(_s, max-width)
-          $to-rem(_s * 0.5, border-radius)
-          border-radius 50%
-
-    &__name
-      +$mq(sm)
-        span
-          display block
-
-
-  &__description
-    text-align center
+    +mq(xl)
+      border-color: yellow;

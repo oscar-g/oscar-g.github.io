@@ -1,0 +1,14 @@
+body
+    background-color: $colors['white']
+
+    & > header
+        background: radial-gradient(circle, transparentify($colors.canvas, $colors['white'], 0.75) 0%, transparent 60%);
+
+// custom selection colors
+::-moz-selection
+    background: $colors.dkred
+    color: $colors.canvas
+
+::selection
+    background: $colors.dkred
+    color: $colors.canvas
