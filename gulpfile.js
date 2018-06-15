@@ -5,7 +5,10 @@ require('dotenv').config();
 var del = require('del'),
     gulp = require('gulp'),
     stylus = require('gulp-stylus'),
-    pug = require('gulp-pug');
+    pug = require('gulp-pug'),
+    serve = require('gulp-serve');
+
+var data = require('./data.json');
 
 gulp.task('assets', ['clean'], function(){
     return gulp.src('./src/assets/**/*')
@@ -22,6 +25,7 @@ gulp.task('pages', ['clean'], function(){
     return gulp.src('./src/pages/**/*.pug')
     .pipe(pug({
         locals: {
+            ...data,
             ga: process.env.GOOGLE_ANALYTICS_KEY,
         }
     }))
@@ -38,4 +42,5 @@ gulp.task('clean', function() {
 
 gulp.task('build', ['clean', 'assets', 'styles', 'pages']);
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('serve', ['clean'], serve('build'));
+gulp.task('default', ['serve', 'build', 'watch']);
