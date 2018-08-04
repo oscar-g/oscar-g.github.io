@@ -1,0 +1,18 @@
+extends ../layout
+
+block title
+  title Home
+
+block header
+  header(itemtype='https://schema.org/Person' itemscope)
+    .profile
+      .profile__img(itemprop='image' itemscope itemtype='http://schema.org/ImageObject')
+        img(src=profile.imgSrc alt=profile.imgAlt itemprop='contentUrl')
+      .profile__info
+        h1(itemprop='name') !{profile.fullname}
+        h2(itemprop='description')= profile.description
+
+block content
+  main
+    p Github:
+      a(href="https://github.com/" + info.github) !{info.github}
