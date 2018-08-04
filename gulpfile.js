@@ -12,13 +12,13 @@ var data = require('./data.json');
 
 gulp.task('assets', ['clean'], function(){
     return gulp.src('./src/assets/**/*')
-    .pipe(gulp.dest('./build'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('styles', ['clean'], function(){
     return gulp.src('./src/styl/screen.styl')
     .pipe(stylus())
-    .pipe(gulp.dest('./build/css/'));
+    .pipe(gulp.dest('./dist/css/'));
 });
 
 gulp.task('pages', ['clean'], function(){
@@ -29,7 +29,7 @@ gulp.task('pages', ['clean'], function(){
             ga: process.env.GOOGLE_ANALYTICS_KEY,
         }
     }))
-    .pipe(gulp.dest('./build/'));
+    .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('watch', ['build'], function(){
@@ -37,10 +37,10 @@ gulp.task('watch', ['build'], function(){
 });
 
 gulp.task('clean', function() {
-    return del('./build/');
+    return del('./dist/');
 });
 
 gulp.task('build', ['clean', 'assets', 'styles', 'pages']);
-
 gulp.task('serve', ['clean'], serve('build'));
+
 gulp.task('default', ['serve', 'build', 'watch']);
