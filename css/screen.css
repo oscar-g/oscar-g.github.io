@@ -271,6 +271,17 @@ h2 {
     line-height: 2.178457604238956rem;
   }
 }
+a,
+a:visited {
+  text-decoration: none;
+  color: #85144b;
+}
+a:hover {
+  color: #b11b64;
+}
+a:focus {
+  text-decoration: underline;
+}
 body {
   position: relative;
   min-height: 100vh;
@@ -317,7 +328,7 @@ body {
   .profile {
     align-self: auto;
     flex-direction: row;
-    padding: 2.618034025156rem 6.854102156874526rem 1rem 2.618034025156rem;
+    padding: 2.618034025156rem 4.236068065859262rem 1rem 2.618034025156rem;
     border: 0 #85144b dashed;
     border-width: 0;
     border-right-width: 4px;
