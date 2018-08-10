@@ -41,6 +41,6 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', ['clean', 'assets', 'styles', 'pages']);
-gulp.task('serve', ['clean'], serve('build'));
+gulp.task('serve', ['clean'], serve('dist'));
 
 gulp.task('default', ['serve', 'build', 'watch']);
