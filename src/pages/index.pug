@@ -10,9 +10,5 @@ block header
         img(src=profile.imgSrc alt=profile.imgAlt itemprop='contentUrl')
       .profile__info
         h1(itemprop='name') !{profile.fullname}
-        h2(itemprop='description')= profile.description
-
-block content
-  main
-    p Github:
-      a(href="https://github.com/" + info.github) !{info.github}
+        h2(itemprop='description')
+          a(href="https://github.com/" + info.github)= profile.description
